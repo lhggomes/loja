@@ -8,9 +8,23 @@ import br.com.alura.loja.util.JPAUtil;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
+import java.util.List;
 
 public class CadastroDeProduto {
     public static void main(String[] args) {
+        cadastrarProduto();
+        EntityManager em = JPAUtil.getEntityManager();
+        ProdutoDAO produtoDAO = new ProdutoDAO(em);
+
+        Produto p = produtoDAO.buscarPorId(1l);
+        System.out.println(p.getPreco());
+
+        List<Produto> produtos = produtoDAO.buscarTodos();
+        produtos.forEach(prod-> System.out.println(prod.getNome()));
+
+    }
+
+    public static void cadastrarProduto(){
         Categoria celulares = new Categoria("CELULAR");
 
 
