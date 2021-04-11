@@ -16,13 +16,12 @@ public class Produto {
     private String descricao;
     private BigDecimal preco;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Id
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getDescricao() {
