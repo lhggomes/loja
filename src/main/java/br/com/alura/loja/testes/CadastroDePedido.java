@@ -6,6 +6,7 @@ import br.com.alura.loja.dao.PedidoDAO;
 import br.com.alura.loja.dao.ProdutoDAO;
 import br.com.alura.loja.modelo.*;
 import br.com.alura.loja.util.JPAUtil;
+import br.com.alura.loja.vo.RelatorioVendasVo;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
@@ -34,12 +35,8 @@ public class CadastroDePedido {
         System.out.println("Valor Total: " + totalVendido);
 
 
-        List<Object[]> relatorio = pedidoDAO.relatorioDeVendas();
-        for (Object[] obj: relatorio){
-            System.out.println(obj[0]);
-            System.out.println(obj[1]);
-            System.out.println(obj[2]);
-        }
+        List<RelatorioVendasVo> relatorio = pedidoDAO.relatorioDeVendas();
+        relatorio.forEach(System.out::println);
 
     }
 
