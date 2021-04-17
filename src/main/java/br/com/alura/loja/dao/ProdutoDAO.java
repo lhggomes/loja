@@ -54,15 +54,15 @@ public class ProdutoDAO {
       String jpql = "SELECT p FROM Produto p WHERE 1=1 ";
 
       if (nome != null & nome.trim().isEmpty()){
-          jpql = " AND p.nome = :nome";
+          jpql += " AND p.nome = :nome";
 
       }
       if (preco != null){
-          jpql = " AND p.preco = :preco ";
+          jpql += " AND p.preco = :preco ";
       }
 
       if(dataCadastro != null){
-          jpql = " AND p.dataCadastro = :dataCadastro ";
+          jpql += " AND p.dataCadastro = :dataCadastro ";
       }
 
       TypedQuery<Produto> query = em.createQuery(jpql, Produto.class);
