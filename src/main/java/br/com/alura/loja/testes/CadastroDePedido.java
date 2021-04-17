@@ -29,6 +29,9 @@ public class CadastroDePedido {
 
         em.getTransaction().commit();
 
+        BigDecimal totalVendido = pedidoDAO.valorTotalVendido();
+        System.out.println("Valor Total: " + totalVendido);
+
     }
 
     public static void popularBancoDeDados(){
