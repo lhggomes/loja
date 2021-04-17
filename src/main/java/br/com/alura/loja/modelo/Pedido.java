@@ -4,6 +4,7 @@ package br.com.alura.loja.modelo;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name="pedidos")
@@ -19,15 +20,15 @@ public class Pedido {
     @ManyToOne
     private Cliente cliente;
 
+    @OneToMany
+    private List<ItemPedido> itens;
+
     public Pedido() {
     }
 
-    public Pedido(BigDecimal valorTotal, LocalDate data, Cliente cliente) {
-        this.valorTotal = valorTotal;
-        this.data = data;
+    public Pedido(Cliente cliente) {
         this.cliente = cliente;
     }
-
 
     public Long getId() {
         return id;
