@@ -5,24 +5,26 @@ import javax.persistence.*;
 @Entity
 @Table(name = "categorias")
 public class Categoria{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nome;
 
-    public Categoria(){
+
+    @EmbeddedId
+    private CategoriaID id;
+
+    public Categoria(String nome){
+        this.id = new CategoriaID(nome, "xpto");
+    }
+
+    public Categoria() {
 
     }
 
-    public Categoria(String nome) {
-        this.nome = nome;
-    }
 
     public String getNome() {
-        return nome;
+
+        return this.id.getNome();
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.id.setNome(nome);
     }
 }
